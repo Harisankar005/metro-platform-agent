@@ -1,0 +1,11 @@
+﻿train_id,arrival_time,departure_time,priority,compatible_platforms,delay,passenger_load,direction
+T1,10:00,10:10,Normal,P1|P2,0,500,North
+T2,10:05,10:15,High,P1|P2|P3,0,800,South
+T3,10:08,10:20,Normal,P2|P3,0,300,North
+T4,10:12,10:22,Emergency,P1|P4,0,650,South
+T5,10:18,10:28,High,P3|P4,0,750,North
+T6,10:22,10:32,Normal,P1|P2|P3,0,420,South
+T7,10:25,10:35,Normal,P2|P4,0,380,North
+T8,10:30,10:40,High,P1|P3|P4,0,820,South
+T9,10:35,10:45,Normal,P1|P2,0,490,North
+T10,10:38,10:48,Emergency,P2|P3|P4,0,700,South
