@@ -275,12 +275,3 @@ Proposed Agent Conflict Check: PASS
 In **Scenario 6 (Tight CSP)**:
 - **Basic CSP:** Processes trains chronologically by arrival time. It assigns early choices that seem valid locally but lead to deep dead-ends downstream when heavily constrained single-choice trains arrive. Basic CSP must undo multiple assignments, expanding **17 nodes** and requiring **8 backtracks**.
 - **Proposed Agent:** With **MRV**, the agent identifies and schedules the most tightly constrained trains first (domain size 1). Simultaneously, **Forward Checking** looks ahead and eliminates conflicting platform options from remaining trains. If any train loses all viable choices, the solver detects this at depth 1 instead of exploring futile sub-trees. Consequently, the Proposed Agent finds the optimal conflict-free solution in **9 nodes with 0 backtracks** (a 47% reduction in search states and 100% elimination of backtracks).
-
----
-
-## 19. Two-Minute Viva Guide
-> **Summary for Evaluators:**  
-> "We simulate a metro station with trains and platforms. The agent assigns incoming trains to compatible platforms without timing conflicts. We model this as a **Constraint Satisfaction Problem (CSP)**, where trains are variables and platforms are their domains.  
-> **`backtrack()`** recursively searches for valid assignments. **`select_mrv()`** chooses the most constrained train first, while **`forward_check()`** immediately removes platform choices that have become impossible, preventing useless search.  
-> We use simple **rules** for platform closures and passenger priorities (`Emergency` > `High` > `Normal`). When a disruption occurs, **`replan()`** detects invalid assignments, preserves frozen (docked/departed) trains, and re-allocates future trains.  
-> We compare the Proposed Agent with **FCFS**, **Greedy**, and **Basic CSP**. While baselines leave stale schedules that produce conflicts, the Proposed Agent maintains **0 unresolved conflicts** across all scenarios."
